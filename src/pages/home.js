@@ -5,15 +5,6 @@ export const Home = () => {
             <h1 >
                 Home
                 Home
-                Home
-                Home
-                Home
-                Home
-                Home
-                Home
-                Home
-                Home
-                Home
             </h1>
         </>
     )
