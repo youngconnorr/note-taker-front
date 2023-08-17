@@ -9,20 +9,28 @@ export const Auth = () => {
     }
 
     return (
-        <>
+        <p>
             {showForm ? (
                 <>
                     <Login />
-                    <button onClick={() => setShowForm(false)}>Don't have an account? Registere Here!</button>
+                    <div className='flex justify-center'>
+                        <button onClick={() => setShowForm(false)} className='text-gray-500 flex justify-center p-2 m-5 hover:text-white transition ease-in-out duration-300'>
+                            Don't have an account? Register Here!
+                        </button>
+                    </div>
                 </>
             ) : (
                 <>
                     <Register />
-                    <button onClick={() => setShowForm(true)}>Already have an account? Login Here!</button>
+                    <div className='flex justify-center '>
+                        <button onClick={() => setShowForm(true)} className='text-gray-500 flex justify-center p-2 m-5 hover:text-white transition ease-in-out duration-300'>
+                            Already have an account? Login Here!
+                        </button>
+                    </div>
                 </>
             )}
 
-        </>
+        </p>
 
     )
 }
