@@ -1,16 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+
 
 export const MakeNote = () => {
     const [note, setNote] = useState({});
-    //color: ""
-    //name: ""
-    //content: ""
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         setNote({ ...note, [name]: value })
     }
+
+    const handleContentChange = (content) => {
+        setNote({ ...note, content });
+    };
 
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -52,18 +56,16 @@ export const MakeNote = () => {
                     </p>
                     <p className='pt-1'>
                         <label htmlFor="content"></label>
-                        <textarea
+                        <ReactQuill
                             name='content'
                             id='content'
-                            className='border rounded bg-primary
-                            focus:outline-none text-sm w-4/5
-                            px-2 py-1 h-80'
-                            placeholder='Your note...'
-                            onChange={handleChange}>
-                        </textarea>
+                            className='bg-primary
+                            focus:outline-none text-sm max-w-3xl py-1 h-80'
+                            onChange={handleContentChange}>
+                        </ReactQuill>
                     </p>
 
-                    <button type='submit' className='border rounded px-2 mt-1 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400'> Save note
+                    <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400'> Save note
                     </button>
                 </form>
             </div>
