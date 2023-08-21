@@ -64,6 +64,7 @@ export const Login = () => {
             password={password}
             setPassword={setPassword}
             label="Login"
+            onSubmit={onSubmit}
         //using props and components we don't have to repeat ourselves
         />
     )
@@ -100,7 +101,7 @@ const Form = ({
                         onChange={(event) => setPassword(event.target.value)} />
                 </div>
                 <div className='flex justify-end'>
-                        <button type="submit" className='px-4  mt-5 pr-3 hover:translate-x-2 transition-transform duration-300 ease-in-out'> <Arrow /> </button>
+                    <button type='submit' className='px-4  mt-5 pr-3 hover:translate-x-2 transition-transform duration-300 ease-in-out'> <Arrow /> </button>
                 </div>
             </form>
         </div>

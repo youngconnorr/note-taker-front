@@ -2,10 +2,20 @@ import React, { useState } from "react";
 import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
+import { GetUserID } from "../hooks/useGetUserID";
 
 
 export const MakeNote = () => {
-    const [note, setNote] = useState({});
+
+    const userID = GetUserID();
+    
+    
+    const [note, setNote] = useState({
+        color: "",
+        name: "",
+        content: "",
+        userOwner: userID,
+    });
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -61,10 +71,12 @@ export const MakeNote = () => {
                             id='content'
                             className='bg-primary
                             focus:outline-none text-sm max-w-3xl py-1 h-80'
+                            styles={{
+                                '.ql-editor': 'font-family: font-mono, monospace;'
+                            }}
                             onChange={handleContentChange}>
                         </ReactQuill>
                     </p>
-
                     <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400'> Save note
                     </button>
                 </form>
