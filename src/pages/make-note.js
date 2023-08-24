@@ -3,13 +3,16 @@ import axios from 'axios';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { GetUserID } from "../hooks/useGetUserID";
-
+import { useNavigate } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const MakeNote = () => {
 
     const userID = GetUserID();
-    
-    
+
+    const navigate = useNavigate();
+
     const [note, setNote] = useState({
         color: "",
         name: "",
@@ -26,11 +29,16 @@ export const MakeNote = () => {
         setNote({ ...note, content });
     };
 
+    const notify = () => {
+        toast('so good!')
+    }
+
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
             await axios.post("http://localhost:3001/notes", note)
-            alert("Note created!")
+            console.log('notify')
+            navigate('/');
         } catch (error) {
             console.log(error);
         }
@@ -77,10 +85,12 @@ export const MakeNote = () => {
                             onChange={handleContentChange}>
                         </ReactQuill>
                     </p>
-                    <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400'> Save note
+                    <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400' onClick={notify}> Save note
                     </button>
                 </form>
             </div>
+            <ToastContainer />
         </div>
     )
+
 }
