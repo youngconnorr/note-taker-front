@@ -4,7 +4,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css'; // Import Quill styles
 import { GetUserID } from "../hooks/useGetUserID";
 import { useNavigate } from 'react-router-dom'
-import { ToastContainer, toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const MakeNote = () => {
@@ -30,19 +30,21 @@ export const MakeNote = () => {
     };
 
     const notify = () => {
-        toast('so good!')
+        toast.success('so good!')
     }
-
+    
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
             await axios.post("http://localhost:3001/notes", note)
             console.log('notify')
+            notify();
+            alert('note made!')
             navigate('/');
         } catch (error) {
             console.log(error);
         }
-
+        
     }
     return (
         <div className=''>
@@ -79,13 +81,11 @@ export const MakeNote = () => {
                             id='content'
                             className='bg-primary
                             focus:outline-none text-sm max-w-3xl py-1 h-80'
-                            styles={{
-                                '.ql-editor': 'font-family: font-mono, monospace;'
-                            }}
+
                             onChange={handleContentChange}>
                         </ReactQuill>
                     </p>
-                    <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400' onClick={notify}> Save note
+                    <button type='submit' className=' border rounded px-2 mt-16 hover:bg-gray-200 hover:text-primary transition ease-in-out duration-400'> Save note
                     </button>
                 </form>
             </div>
