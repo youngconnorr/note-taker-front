@@ -33,6 +33,7 @@ export const MakeNote = () => {
         toast.success('so good!')
     }
     
+
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -93,4 +94,4 @@ export const MakeNote = () => {
         </div>
     )
 
-}
+ }

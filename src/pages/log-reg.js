@@ -47,11 +47,17 @@ export const Login = () => {
         event.preventDefault()
         try {
             const response = await axios.post("http://localhost:3001/auth/login", { username, password });
-
-            setCookies("access_token", response.data.token); //grabbing jwt and userid
+            if (response.data.token) {
+                setCookies('access_token', response.data.token);
+                console.log('it worked!')
+                navigate("/")
+            } else {
+                setCookies('access_token', ''); // Clear the cookie if there is no token
+                alert("account doesn't exist")
+            }; //grabbing jwt and userid
             window.localStorage.setItem("userID", response.data.userID)
 
-            navigate("/") //when finishing it will redirect you
+             //when finishing it will redirect you
         } catch (err) {
             console.error(err)
         }
@@ -79,7 +85,7 @@ const Form = ({
     onSubmit,
 }) => {
     return (
-        <div className='flex justify-center mt-4'>
+        <div className='flex justify-center mt-4 h-full'>
             <form onSubmit={onSubmit}>
                 <h1 className='flex justify-center'> {label} </h1>
                 <div className='pt-5 pb-5'>

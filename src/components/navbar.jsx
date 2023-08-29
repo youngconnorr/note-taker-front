@@ -14,9 +14,9 @@ export const Navbar = () => {
     }
     return (
         <>
-            <nav>
+            <nav className='fixed'>
                 <div>
-                    <ul className='bg-navbar text-white top-0 left-0 h-screen w-16 flex flex-col shadow-lg pt-6 justify-between'>
+                    <ul className=' bg-navbar text-white top-0 left-0 h-screen w-16 flex flex-col shadow-lg pt-6 justify-between '>
                         <div className='space-y-12'>
                             <button className='absolute mx-3  pt-3 px-3 hover:-translate-y-0.5 transition-transform duration-300 ease-in-out'><Link to='/'> <House /> </Link></button>
                             <button className=' mx-2 border-t border-b py-5 px-4'><Link to='/make-note'> <Plus /> </Link></button>

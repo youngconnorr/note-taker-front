@@ -1,10 +1,7 @@
-
 export const NoteList = () => {
     return (
-    <>
-        <h1>
-            NoteList  
-        </h1>
-    </>
+        <div>
+            THIS IS YOUR NOTES
+        </div>
     )
 }
