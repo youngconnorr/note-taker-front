@@ -1,14 +1,14 @@
-# MERN Stack Note Taking App
+# MERN Stack Note Taker 📝
 - This is a full-stack note-taking application built using the MERN (MongoDB, Express.js, React.js, Node.js) stack.
 
-## Features
+## Features 📄
 - Create, read, update, and delete notes.
 - User authentication and authorization system.
 - Markdown support for note content.
 - Responsive design for mobile and desktop devices.
 - Add a color to specific notes.
 
-## Technologies Used
+## Technologies Used 💻
 - MongoDB: NoSQL database for storing user notes and user authentication data.
 - Express.js: Server-side framework for handling HTTP requests and API endpoints.
 - React.js: JavaScript library for building the user interface and interactive components.
